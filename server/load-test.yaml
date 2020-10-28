@@ -1,0 +1,25 @@
+#  artillery run load-test.yaml
+config:
+  target: "http://localhost:3001"
+  http:
+    pool: 100
+  phases:
+    - duration: 30
+      arrivalRate: 15
+      name: Warm up
+    - duration: 60
+      arrivalRate: 25
+      rampTo: 200
+      name: Ramp up load
+    - duration: 30
+      arrivalRate: 10
+      name: Sustained load
+scenarios:
+  - name: 'Get review'
+    flow:
+      - get:
+          url: '/'
+      - loop:
+        - get:
+            url: '/reviews/{{$randomNumber(1,100000)}}/list'
+        count: 2

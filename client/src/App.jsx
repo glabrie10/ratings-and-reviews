@@ -33,7 +33,7 @@ const App = () => {
         <Col xs="0" sm="2" />
         <Col xs="12" sm="8">
           <Container className="main-container">
-            <h1 className="title">Ratings and Reviews</h1>
+            <h1 className="title">Ratings and Reviews / server</h1>
             <Row>
               <Col lg="12" xl="4">
                 <RatingView id={productId} change={handleChangeSort} sort={starSort} remove={handleRemoveSort} />
